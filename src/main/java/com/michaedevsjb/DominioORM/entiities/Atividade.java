@@ -23,14 +23,14 @@ public class Atividade {
 
     private String name;
     private String descricao;
-    private Double price;
+    private Double preco;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     @ManyToMany
-    @JoinTable(name = "tb_atividade_participante", joinColumns = @JoinColumn(name = "atividade_id"), inverseJoinColumns = @JoinColumn(name = "participante_id"))
+    @JoinTable(name = "tb_atividade_participante_id", joinColumns = @JoinColumn(name = "atividade_id"), inverseJoinColumns = @JoinColumn(name = "participante_id"))
     private Set<Participante> participantes = new HashSet<>();
 
     @OneToMany(mappedBy = "atividade")
@@ -39,11 +39,11 @@ public class Atividade {
     public Atividade() {
     }
 
-    public Atividade(Integer id, String name, String descricao, Double price) {
+    public Atividade(Integer id, String name, String descricao, Double preco) {
         this.id = id;
         this.name = name;
         this.descricao = descricao;
-        this.price = price;
+        this.preco = preco;
     }
 
     public Integer getId() {
@@ -70,16 +70,20 @@ public class Atividade {
         this.descricao = descricao;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 
     public Categoria getCategoria() {
         return categoria;
+    }
+
+    public List<Bloco> getBlocos() {
+        return blocos;
     }
 
     public Set<Participante> getParticipantes() {

@@ -1,12 +1,8 @@
 package com.michaedevsjb.DominioORM.entiities;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,9 +16,6 @@ public class Participante {
 
     @Column(unique = true)
     private String email;
-
-    @OneToMany(mappedBy = "participantes")
-    private Set<Atividade> atividades = new HashSet<>();
 
     public Participante() {
     }
@@ -43,10 +36,6 @@ public class Participante {
 
     public String getEmail() {
         return email;
-    }
-
-    public Set<Atividade> getAtividades() {
-        return atividades;
     }
 
 }
